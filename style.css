@@ -73,12 +73,11 @@ body {
 	font-family: 'Libre Baskerville', serif;
 }
 
-#haruna {
+#secretary {
 	height: 80vh;
 	position: relative;
 	animation: idle 6s ease infinite;
 	transform-origin: 50% 100%;
-	cursor: pointer;
 }
 
 .icon {
