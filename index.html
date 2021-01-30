@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-	<link rel="icon" type="image/png" href="./favicon.png"/>
-    <!-- control script -->
-    <script defer src="./script.js"></script>
-    <title>榛名</title>
-  </head>
-  <body>
-    <audio id="voice" src="./audio/haruna/attack.ogg"></audio>
-    <audio id="ambience" src="./audio/ambience.mp3"></audio>
-	<img id="haruna" src="./img/haruna.webp" alt="haruna" />
-    <span id="clock"></span>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<link rel="icon" type="image/png" href="./favicon.png"/>
+		<!-- control script -->
+		<script defer src="./script.js"></script>
+		<title>榛名</title>
+	</head>
+	<body class="flex-contain">
+		<audio id="voice" src="./audio/haruna/attack.ogg"></audio>
+		<audio id="ambience" src="./audio/ambience.mp3"></audio>
+		<img id="haruna" src="./img/haruna.webp" alt="Haruna!" style="opacity: 0" />
+		<span id="clock"></span>
+		<div id="icon-container" class="flex-contain">
+			<h1>Choose your favorite Kongou class.</h1>
+			<span class="choice">
+				<img class="icon" src="./img/kongou_icon.png" alt="Kongou icon" />
+				Kongou
+			</span>
+			<span class="choice">
+				<img class="icon" src="./img/hiei_icon.png" alt="Hiei icon" />
+				Hiei
+			</span>
+			<span class="choice">
+				<img class="icon" src="./img/kirishima_icon.png" alt="Kirishima icon" />
+				Kirishima
+			</span>
+			<span class="choice">
+				<img class="icon" src="./img/haruna_icon.png" alt="Haruna icon" />
+				Haruna
+			</span>
+		</div>
+	</body>
 </html>

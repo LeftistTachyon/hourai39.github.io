@@ -16,62 +16,80 @@ const quote = [
   "secretary2.ogg",
   "secretary3.ogg",
 ];
-var flag = false;
+var flag = true;
 const ambience = document.getElementById("ambience");
-ambience.play();
-ambience.loop = true;
+const haruna = document.getElementById("haruna");
+const voice = document.getElementById("voice");
 
-document.getElementById("haruna").addEventListener("click", function() {
-  const voice = document.getElementById("voice");
-
-  const audio = quote[Math.floor(Math.random() * quote.length)];
-  flag = true;
-  voice.setAttribute("src", "./audio/haruna/" + audio);
-  voice.play();
-  this.style.animationName = "bounce";
-  this.style.animationDuration = "0.5s";
-  this.style.animationTimingFunction = "linear";
+haruna.addEventListener("click", function() {
+	const audio = quote[Math.floor(Math.random() * quote.length)];
+	flag = true;
+	voice.setAttribute("src", "./audio/haruna/" + audio);
+	voice.play();
+	this.style.animation = "bounce 0.5s linear infinite";
 });
 
+for (const icon of document.getElementsByClassName("icon")) {
+	icon.addEventListener("click", function() {
+		const iconContainer = document.getElementById("icon-container");
+		
+		// start the fades
+		haruna.style.animation = "fade-in 2s ease 1";
+		iconContainer.style.animation = "fade-out 2s ease 1";
+		
+		setTimeout(function() {
+			// console.log(haruna.style.animation);
+			haruna.style.opacity = null;
+			haruna.style.animation = null;
+			iconContainer.style.display = "none";
+			
+			flag = false;
+		}, 2000);
+		
+		// start the ambience
+		ambience.play();
+		ambience.loop = true;
+		
+		// play the beginning line
+		voice.setAttribute("src", "./audio/haruna/battle-start.ogg");
+		voice.play();
+	});
+}
+
 setInterval(function () {
-  const clock = document.getElementById("clock");
-  const haruna = document.getElementById("haruna");
-  const voice = document.getElementById("voice");
+	const clock = document.getElementById("clock");
 
-  let time = new Date();
-  let sec = time.getSeconds();
-  let min = time.getMinutes();
-  let hr = time.getHours();
-  // let sec = time.getSeconds() * 4 % 60;
-  // let min = 0;
-  // let hr = 1;
+	let time = new Date();
+	let sec = time.getSeconds();
+	let min = time.getMinutes();
+	let hr = time.getHours();
+	// let sec = time.getSeconds() * 3 % 60;
+	// let min = 0;
+	// let hr = 1;
 
-  if (sec === 0 && min === 0 && flag === false) {
-    console.log("run");
-    flag = true;
-    let vcode = hr;
-    vcode = String(vcode < 10 ? ("0" + vcode) : vcode);
-    voice.setAttribute("src", "audio/haruna/" + vcode + ".ogg");
-    voice.play();
-    haruna.style.animationName = "rotate";
-    haruna.style.animationDuration = "0.5s";
-  }
+	if (sec === 0 && min === 0 && flag === false) {
+		// console.log("run");
+		flag = true;
+		let vcode = hr;
+		vcode = String(vcode < 10 ? ("0" + vcode) : vcode);
+		voice.setAttribute("src", "audio/haruna/" + vcode + ".ogg");
+		voice.play();
+		haruna.style.animation = "rotate 0.5s infinite";
+	}
 
-  if (voice.ended) {
-    haruna.style.animationName = "idle";
-    haruna.style.animationDuration = "4s";
-    haruna.style.animationTimingFunction = "ease";
-    flag = false;
-  }
+	if (voice.ended) {
+		haruna.style.animation = "idle 6s ease infinite";
+		flag = false;
+	}
 
-  if (sec < 10) {
-    sec = "0" + sec;
-  }
-  if (min < 10) {
-    min = "0" + min;
-  }
-  if (hr < 10) {
-    hr = "0" + hr;
-  }
-  clock.textContent = hr + ":" + min + ":" + sec;
+	if (sec < 10) {
+		sec = "0" + sec;
+	}
+	if (min < 10) {
+		min = "0" + min;
+	}
+	if (hr < 10) {
+		hr = "0" + hr;
+	}
+	clock.textContent = hr + ":" + min + ":" + sec;
 });
