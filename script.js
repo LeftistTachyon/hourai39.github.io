@@ -67,6 +67,7 @@ for (const icon of document.getElementsByClassName("icon")) {
 	});
 }
 
+// var hour = 1;
 setInterval(function () {
 	const clock = document.getElementById("clock");
 
@@ -76,7 +77,7 @@ setInterval(function () {
 	let hr = time.getHours();
 	// let sec = time.getSeconds() * 3 % 60;
 	// let min = 0;
-	// let hr = 1;
+	// let hr = hour;
 
 	if (sec === 0 && min === 0 && flag === 0) {
 		// console.log("run");
