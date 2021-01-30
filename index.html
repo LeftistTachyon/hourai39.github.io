@@ -9,29 +9,33 @@
 		<script defer src="./script.js"></script>
 		<title>榛名</title>
 	</head>
-	<body class="flex-contain">
+	<body>
 		<audio id="voice" src="./audio/haruna/attack.ogg"></audio>
 		<audio id="ambience" src="./audio/ambience.mp3"></audio>
 		<img id="secretary" src="./img/haruna.webp" alt="Haruna!" style="opacity: 0" />
 		<span id="clock"></span>
-		<div id="icon-container" class="flex-contain">
-			<h1>Choose your favorite Kongou class.</h1>
-			<span class="choice">
-				<img class="icon" src="./img/kongou_icon.png" alt="Kongou icon" data-name="kongou" />
-				Kongou
-			</span>
-			<span class="choice">
-				<img class="icon" src="./img/hiei_icon.png" alt="Hiei icon" data-name="hiei" />
-				Hiei
-			</span>
-			<span class="choice">
-				<img class="icon" src="./img/kirishima_icon.png" alt="Kirishima icon" data-name="kirishima" />
-				Kirishima
-			</span>
-			<span class="choice">
-				<img class="icon" src="./img/haruna_icon.png" alt="Haruna icon" data-name="haruna" />
-				Haruna
-			</span>
-		</div>
+		<table id="icon-container">
+			<tr>
+				<th colspan="2">
+					<h1>Choose your favorite Kongou class.</h1>
+				</th>
+			</tr>
+			<tr>
+				<td><img class="icon" src="./img/kongou_icon.png" alt="Kongou icon" data-name="kongou" /></td>
+				<td>Kongou</td>
+			</tr>
+			<tr>
+				<td><img class="icon" src="./img/hiei_icon.png" alt="Hiei icon" data-name="hiei" /></td>
+				<td>Hiei</td>
+			</tr>
+			<tr>
+				<td><img class="icon" src="./img/kirishima_icon.png" alt="Kirishima icon" data-name="kirishima" /></td>
+				<td>Kirishima</td>
+			</tr>
+			<tr>
+				<td><img class="icon" src="./img/haruna_icon.png" alt="Haruna icon" data-name="haruna" /></td>
+				<td>Haruna</td>
+			</tr>
+		</table>
 	</body>
 </html>
