@@ -8,14 +8,16 @@
 // }
 
 var flag = false;
-setInterval(function () {
+setInterval(function() {	
   const clock = document.querySelector(".display");
   const haruna = document.getElementById("haruna");
   const voice = document.getElementById("voice");
 
   let time = new Date();
   let sec = time.getSeconds();
+  // let sec = time.getSeconds() * 4 % 60;
   let min = time.getMinutes();
+  // let min = 0;
   let hr = time.getHours();
 
 
@@ -24,7 +26,7 @@ setInterval(function () {
     flag = true;
     let vcode = hr;
     vcode = String(vcode < 10 ? ("0" + vcode) : vcode);
-    voice.setAttribute("src", "./audio/Haruna-" + vcode + ".ogg");
+    voice.setAttribute("src", "audio/haruna/" + vcode + ".ogg");
     voice.play();
     haruna.style.animationName = "rotate";
     haruna.style.animationDuration = "0.5s";

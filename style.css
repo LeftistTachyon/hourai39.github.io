@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 @keyframes idle {
   0%   {top:0px;}
-  50%  {top:-10px;transform: rotate(-1deg);}
+  25%  {top:-10px;transform: rotate(-1deg);}
+  50%  {top:0px;}
+  75%  {top:-10px;transform: rotate(1deg);}
   100% {top:0px;}
 }
 
@@ -11,21 +13,22 @@
   100% {transform: rotate(-0.5deg);}
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html,body{
+html, body {
   height: 100%;
 }
-body{
+body {
   display: grid;
   place-items: center;
   background: #131419;
   background-image: url(./img/bg.jpg);
+  background-size: cover;
 }
-.clock{
+.clock {
   padding-top: 30vh;
   padding-left: 45vw;
   background: #6288b475;
@@ -38,17 +41,17 @@ body{
                3px 3px 5px rgba(0,0,0,0.5);
   border-radius: 5px;
 }
-.clock .display{
+.clock .display {
   font-size: 4vh;
   color: white;
   letter-spacing: 2px;
   font-family: 'Libre Baskerville', serif;
 }
-#haruna{
+#haruna {
   height: 80vh;
   position: relative;
   animation-name: idle;
-  animation-duration: 4s;
+  animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-timing-function: ease;
   transform-origin: 50% 100%;
