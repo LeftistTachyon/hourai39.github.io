@@ -7,14 +7,14 @@
 // }
 
 const quote = [
-  "Haruna-Attack.ogg",
-  "Haruna-Battle_Start.ogg",
-  "Haruna-Idle.ogg",
-  "Haruna-Library.ogg",
-  "Haruna-Night_Battle.ogg",
-  "Haruna-Secretary_1.ogg",
-  "Haruna-Secretary_2.ogg",
-  "Haruna-Secretary_3.ogg",
+  "attack.ogg",
+  "battle-start.ogg",
+  "idle.ogg",
+  "library.ogg",
+  "night-battle.ogg",
+  "secretary1.ogg",
+  "secretary2.ogg",
+  "secretary3.ogg",
 ];
 var flag = false;
 const ambience = document.getElementById("ambience");
@@ -27,7 +27,7 @@ function test() {
 
   const audio = quote[Math.floor(Math.random() * quote.length)];
   flag = true;
-  voice.setAttribute("src", "./audio/引用/" + audio);
+  voice.setAttribute("src", "./audio/haruna/" + audio);
   voice.play();
   haruna.style.animationName = "bounce";
   haruna.style.animationDuration = "0.5s";
