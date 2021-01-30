@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
 	<link rel="icon" type="image/png" href="./favicon.png"/>
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- control script -->
     <script defer src="./script.js"></script>
     <title>榛名</title>
@@ -17,19 +12,7 @@
   <body>
     <audio id="voice" src="./audio/haruna/attack.ogg"></audio>
     <audio id="ambience" src="./audio/ambience.mp3"></audio>
-    <div class="container p-3 w-100" style="display: grid;place-items: center;">
-      <!-- <img id="haruna" src="./img/haruna.webp" alt="haruna" /> -->
-      
-      <input type="image" id="haruna" src="./img/haruna.webp" alt="Haruna" onclick="test()" />
-    </div>
-    <div class="container w-100 my-2">
-      <div class="row w-100">
-        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-6 mx-auto">
-          <div class="clock">
-            <div class="display"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+	<img id="haruna" src="./img/haruna.webp" alt="haruna" />
+    <span id="clock"></span>
   </body>
 </html>

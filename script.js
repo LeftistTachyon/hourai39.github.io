@@ -21,30 +21,30 @@ const ambience = document.getElementById("ambience");
 ambience.play();
 ambience.loop = true;
 
-function test() {
-  const haruna = document.getElementById("haruna");
+document.getElementById("haruna").addEventListener("click", function() {
   const voice = document.getElementById("voice");
 
   const audio = quote[Math.floor(Math.random() * quote.length)];
   flag = true;
   voice.setAttribute("src", "./audio/haruna/" + audio);
   voice.play();
-  haruna.style.animationName = "bounce";
-  haruna.style.animationDuration = "0.5s";
-  haruna.style.animationTimingFunction = "linear";
-}
+  this.style.animationName = "bounce";
+  this.style.animationDuration = "0.5s";
+  this.style.animationTimingFunction = "linear";
+});
 
 setInterval(function () {
-  const clock = document.querySelector(".display");
+  const clock = document.getElementById("clock");
   const haruna = document.getElementById("haruna");
   const voice = document.getElementById("voice");
 
   let time = new Date();
   let sec = time.getSeconds();
-  // let sec = time.getSeconds() * 4 % 60;
   let min = time.getMinutes();
-  // let min = 0;
   let hr = time.getHours();
+  // let sec = time.getSeconds() * 4 % 60;
+  // let min = 0;
+  // let hr = 1;
 
   if (sec === 0 && min === 0 && flag === false) {
     console.log("run");
