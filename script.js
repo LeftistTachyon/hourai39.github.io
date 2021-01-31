@@ -38,6 +38,13 @@ function randQuote() {
 	}
 };
 
+function recalculateFactor() {
+	let factor = window.innerHeight * 0.8 / img.naturalHeight;
+	// console.log("Calculated a factor of " + factor + " via " + window.innerHeight + " * 0.8 / " + img.naturalHeight);
+	outerG.setAttribute("transform", "scale(" + factor + "," + factor + ")");
+	secretary.setAttribute("width", factor * img.naturalWidth);
+}
+
 for (const icon of icons) {
 	icon.addEventListener("click", function() {
 		if(flag !== 2) {
@@ -59,10 +66,7 @@ for (const icon of icons) {
 		// set up the image
 		img = new Image();
 		img.onload = function() {
-			let factor = window.innerHeight * 0.8 / img.naturalHeight;
-			// console.log("Calculated a factor of " + factor + " via " + window.innerHeight + " * 0.8 / " + img.naturalHeight);
-			outerG.setAttribute("transform", "scale(" + factor + "," + factor + ")");
-			secretary.setAttribute("width", factor * img.naturalWidth);
+			recalculateFactor();
 			
 			// start the fades
 			secretary.style.animation = "fade-in 2s ease 1";
@@ -87,9 +91,7 @@ for (const icon of icons) {
 	});
 }
 
-window.addEventListener("resize", function() {
-	
-});
+window.addEventListener("resize", recalculateFactor);
 
 // var hour = 1;
 setInterval(function () {
