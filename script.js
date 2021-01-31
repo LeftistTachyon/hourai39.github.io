@@ -19,53 +19,77 @@ const quote = [
 var flag = 2, name = "haruna";
 const ambience = document.getElementById("ambience");
 const secretary = document.getElementById("secretary");
+const secImage = document.getElementById("image");
 const voice = document.getElementById("voice");
+const outerG = document.getElementById("outerG");
+const map = document.getElementById("map");
+const icons = document.getElementsByClassName("icon");
 
-secretary.addEventListener("click", function() {
+var img;
+
+function randQuote() {
 	if (flag === 0) {
 		const audio = quote[Math.floor(Math.random() * quote.length)];
 		flag = 1;
+		map.style.cursor = "unset";
 		voice.setAttribute("src", "./audio/" + name + "/" + audio);
 		voice.play();
-		this.style.animation = "bounce 0.5s linear infinite";
-		this.style.cursor = null;
+		secretary.style.animation = "bounce 0.5s linear infinite";
 	}
-});
+};
 
-for (const icon of document.getElementsByClassName("icon")) {
+for (const icon of icons) {
 	icon.addEventListener("click", function() {
 		if(flag !== 2) {
 			return;
 		}
 		flag = 1;
+		for (const i of icons) {
+			i.style.cursor = "unset";
+		}
+		map.style.cursor = "unset";
 		
 		const iconContainer = document.getElementById("icon-container");
 		
 		// set the image
 		name = this.dataset.name;
-		secretary.setAttribute("src", "./img/" + name + ".webp");
-		secretary.style.cursor = null;
+		let imagePath = "./img/" + name + ".webp";
+		secImage.setAttribute("xlink:href", imagePath);
 		
-		// start the fades
-		secretary.style.animation = "fade-in 2s ease 1";
-		iconContainer.style.animation = "fade-out 2s ease 1";
-		
-		setTimeout(function() {
-			// console.log(secretary.style.animation);
-			secretary.style.opacity = null;
-			secretary.style.animation = "none !important";
-			iconContainer.style.display = "none";
-		}, 2000);
-		
-		// start the ambience
-		ambience.play();
-		ambience.loop = true;
-		
-		// play the beginning line
-		voice.setAttribute("src", "./audio/" + name + "/sortie-start.ogg");
-		voice.play();
+		// set up the image
+		img = new Image();
+		img.onload = function() {
+			let factor = window.innerHeight * 0.8 / img.naturalHeight;
+			// console.log("Calculated a factor of " + factor + " via " + window.innerHeight + " * 0.8 / " + img.naturalHeight);
+			outerG.setAttribute("transform", "scale(" + factor + "," + factor + ")");
+			secretary.setAttribute("width", factor * img.naturalWidth);
+			
+			// start the fades
+			secretary.style.animation = "fade-in 2s ease 1";
+			iconContainer.style.animation = "fade-out 2s ease 1";
+			
+			setTimeout(function() {
+				// console.log(secretary.style.animation);
+				secretary.style.opacity = null;
+				secretary.style.animation = "none !important";
+				iconContainer.style.display = "none";
+			}, 2000);
+			
+			// start the ambience
+			ambience.play();
+			ambience.loop = true;
+			
+			// play the beginning line
+			voice.setAttribute("src", "./audio/" + name + "/sortie-start.ogg");
+			voice.play();
+		};
+		img.src = imagePath;
 	});
 }
+
+window.addEventListener("resize", function() {
+	
+});
 
 // var hour = 1;
 setInterval(function () {
@@ -82,7 +106,7 @@ setInterval(function () {
 	if (sec === 0 && min === 0 && flag === 0) {
 		// console.log("run");
 		flag = 1;
-		secretary.style.cursor = null;
+		map.style.cursor = "unset";
 		let vcode = hr;
 		vcode = String(vcode < 10 ? ("0" + vcode) : vcode);
 		voice.setAttribute("src", "audio/" + name + "/" + vcode + ".ogg");
@@ -92,8 +116,8 @@ setInterval(function () {
 
 	if (voice.ended) {
 		secretary.style.animation = "idle 6s ease infinite";
-		secretary.style.cursor = "pointer";
 		flag = 0;
+		map.style.cursor = null;
 	}
 
 	if (sec < 10) {
