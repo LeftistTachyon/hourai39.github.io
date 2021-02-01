@@ -21,8 +21,9 @@ const ambience = document.getElementById("ambience");
 const secretary = document.getElementById("secretary");
 const secImage = document.getElementById("image");
 const voice = document.getElementById("voice");
-const outerG = document.getElementById("outerG");
+const innerG = document.getElementById("innerG");
 const map = document.getElementById("map");
+const path = document.getElementById("path");
 const icons = document.getElementsByClassName("icon");
 
 var img;
@@ -37,13 +38,6 @@ function randQuote() {
 		secretary.style.animation = "bounce 0.5s linear infinite";
 	}
 };
-
-function recalculateFactor() {
-	let factor = window.innerHeight * 0.8 / img.naturalHeight;
-	// console.log("Calculated a factor of " + factor + " via " + window.innerHeight + " * 0.8 / " + img.naturalHeight);
-	outerG.setAttribute("transform", "scale(" + factor + "," + factor + ")");
-	secretary.setAttribute("width", factor * img.naturalWidth);
-}
 
 for (const icon of icons) {
 	icon.addEventListener("click", function() {
@@ -63,11 +57,16 @@ for (const icon of icons) {
 		let imagePath = "./img/" + name + ".webp";
 		secImage.setAttribute("xlink:href", imagePath);
 		
+		let pathData = paths[name];
+		secretary.setAttribute("width", pathData.x);
+		secretary.setAttribute("height", pathData.y);
+		secretary.setAttribute("viewBox", "0 0 " + pathData.x + " " + pathData.y);
+		innerG.setAttribute("transform", "translate(0," + pathData.y + ") scale(0.1,-0.1)");
+		path.setAttribute("d", pathData.path);
+		
 		// set up the image
 		img = new Image();
-		img.onload = function() {
-			recalculateFactor();
-			
+		img.onload = function() {			
 			// start the fades
 			secretary.style.animation = "fade-in 2s ease 1";
 			iconContainer.style.animation = "fade-out 2s ease 1";
@@ -90,8 +89,6 @@ for (const icon of icons) {
 		img.src = imagePath;
 	});
 }
-
-window.addEventListener("resize", recalculateFactor);
 
 // var hour = 1;
 setInterval(function () {

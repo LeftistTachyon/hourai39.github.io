@@ -121,6 +121,7 @@ h1 {
 	padding: 20px;
 	font-size: 1em;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
