@@ -17,14 +17,14 @@ const quote = [
   "secretary3.ogg",
 ];
 var flag = 2, name = "haruna";
-const ambience = document.getElementById("ambience");
-const secretary = document.getElementById("secretary");
-const secImage = document.getElementById("image");
-const voice = document.getElementById("voice");
-const innerG = document.getElementById("innerG");
-const map = document.getElementById("map");
-const path = document.getElementById("path");
-const icons = document.getElementsByClassName("icon");
+const ambience = document.getElementById("ambience"),
+		secretary = document.getElementById("secretary"),
+		secImage = document.getElementById("image"),
+		voice = document.getElementById("voice"),
+		innerG = document.getElementById("innerG"),
+		map = document.getElementById("map"),
+		path = document.getElementById("path"),
+		icons = document.getElementsByClassName("icon");
 
 var img;
 
@@ -57,7 +57,7 @@ for (const icon of icons) {
 		let imagePath = "./img/" + name + ".webp";
 		secImage.setAttribute("xlink:href", imagePath);
 		
-		let pathData = paths[name];
+		let pathData = data[name];
 		secretary.setAttribute("width", pathData.x);
 		secretary.setAttribute("height", pathData.y);
 		secretary.setAttribute("viewBox", "0 0 " + pathData.x + " " + pathData.y);
@@ -114,7 +114,7 @@ setInterval(function () {
 	}
 
 	if (voice.ended) {
-		secretary.style.animation = "idle 6s ease infinite";
+		secretary.style.animation = data[name].idle;
 		flag = 0;
 		map.style.cursor = null;
 	}
