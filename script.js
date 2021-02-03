@@ -16,7 +16,8 @@ const ambience = document.getElementById("ambience"),
 		path = document.getElementById("path"),
 		icons = document.getElementsByClassName("icon"),
 		iconContainer = document.getElementById("icon-container"),
-		searchBox = document.getElementById("searchbox");
+		searchBox = document.getElementById("searchbox"),
+		scrollBox = document.getElementById("scroll-box");
 
 
 function randQuote() {
@@ -98,9 +99,16 @@ searchBox.addEventListener("input", function() {
 		if(!searchBox.value) return;
 		
 		const lev = new LevComparator(searchBox.value);
-		console.log(Object.keys(data).sort(function(a, b) {
+		/*console.log(Object.keys(data).sort(function(a, b) {
 			return lev.compare(a, b);
-		}));
+		}));*/
+		let arr = Array.from(scrollBox.children);
+		arr.sort(function(e1, e2) {
+			return lev.compare(e1, e2);
+		});
+		for(const e of arr) {
+			scrollBox.appendChild(e);
+		}
 	}, 500);
 });
 

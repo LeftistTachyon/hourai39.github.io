@@ -23,8 +23,10 @@ class LevComparator {
 		this.map = {};
 	}
 	
-	compare(s1, s2) {
-		let val1, val2;
+	compare(e1, e2) {
+		let s1 = e1.querySelector("img").dataset.name, 
+				s2 = e2.querySelector("img").dataset.name, 
+				val1, val2;
 		if (this.map[s1 = s1.toUpperCase()]) {
 			val1 = this.map[s1];
 		} else {
