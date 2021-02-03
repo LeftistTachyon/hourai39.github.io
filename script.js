@@ -24,9 +24,9 @@ const ambience = document.getElementById("ambience"),
 		innerG = document.getElementById("innerG"),
 		map = document.getElementById("map"),
 		path = document.getElementById("path"),
-		icons = document.getElementsByClassName("icon");
+		icons = document.getElementsByClassName("icon"),
+		iconContainer = document.getElementById("icon-container");
 
-var img;
 
 function randQuote() {
 	if (flag === 0) {
@@ -41,32 +41,28 @@ function randQuote() {
 
 for (const icon of icons) {
 	icon.addEventListener("click", function() {
-		if(flag !== 2) {
-			return;
-		}
-		flag = 1;
-		for (const i of icons) {
-			i.style.cursor = "unset";
-		}
-		map.style.cursor = "unset";
-		
-		const iconContainer = document.getElementById("icon-container");
-		
-		// set the image
-		name = this.dataset.name;
-		let imagePath = "./img/" + name + ".webp";
-		secImage.setAttribute("xlink:href", imagePath);
-		
-		let pathData = data[name];
-		secretary.setAttribute("width", pathData.x);
-		secretary.setAttribute("height", pathData.y);
-		secretary.setAttribute("viewBox", "0 0 " + pathData.x + " " + pathData.y);
-		innerG.setAttribute("transform", "translate(0," + pathData.y + ") scale(0.1,-0.1)");
-		path.setAttribute("d", pathData.path);
-		
-		// set up the image
-		img = new Image();
-		img.onload = function() {			
+		try {
+			if(flag !== 2 && flag !== 3) {
+				return;
+			}
+			flag = 1;
+			for (const i of icons) {
+				i.style.cursor = "unset";
+			}
+			map.style.cursor = "unset";
+			
+			// set the image
+			name = this.dataset.name;
+			let imagePath = "./img/" + name + ".webp";
+			secImage.setAttribute("xlink:href", imagePath);
+			
+			let pathData = data[name];
+			secretary.setAttribute("width", pathData.x);
+			secretary.setAttribute("height", pathData.y);
+			secretary.setAttribute("viewBox", "0 0 " + pathData.x + " " + pathData.y);
+			innerG.setAttribute("transform", "translate(0," + pathData.y + ") scale(0.1,-0.1)");
+			path.setAttribute("d", pathData.path);
+			
 			// start the fades
 			secretary.style.animation = "fade-in 2s ease 1";
 			iconContainer.style.animation = "fade-out 2s ease 1";
@@ -76,7 +72,7 @@ for (const icon of icons) {
 				secretary.style.opacity = null;
 				secretary.style.animation = "none !important";
 				iconContainer.style.display = "none";
-			}, 2000);
+			}, 1950);
 			
 			// start the ambience
 			ambience.play();
@@ -85,13 +81,28 @@ for (const icon of icons) {
 			// play the beginning line
 			voice.setAttribute("src", "./audio/" + name + "/sortie-start.ogg");
 			voice.play();
-		};
-		img.src = imagePath;
+		} catch(e) {
+			console.error(e);
+		}
 	});
 }
 
+document.getElementById("back").addEventListener("click", function() {
+	flag = 3;
+	secretary.style.animation = "fade-out 2s ease 1";
+	iconContainer.style.animation = "fade-in 2s ease 1";
+	for (const i of icons) {
+		i.style.cursor = null;
+	}
+	iconContainer.style.display = null;
+	
+	setTimeout(function() {
+		secretary.style.opacity = 0;
+	}, 1950);
+});
+
 // var hour = 1;
-setInterval(function () {
+var update = setInterval(function () {
 	const clock = document.getElementById("clock");
 
 	let time = new Date();
@@ -113,7 +124,7 @@ setInterval(function () {
 		secretary.style.animation = "rotate 0.5s infinite";
 	}
 
-	if (voice.ended) {
+	if (voice.ended && flag !== 3) {
 		secretary.style.animation = data[name].idle;
 		flag = 0;
 		map.style.cursor = null;
