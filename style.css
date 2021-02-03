@@ -110,11 +110,9 @@ body {
 	height: 100%;
 	background: #555a;
 	overflow: hidden;
-}
-
-#icon-container>* {
-	padding: 10px 5px;
-	box-sizing: border-box;
+	
+	display: flex;
+	flex-direction: column;
 }
 
 #back {
@@ -134,6 +132,8 @@ body {
 	width: 100%;
 	float: left;
 	font-size: 1em;
+	padding: 10px 5px;
+	box-sizing: border-box;
 }
 
 .choice>* {
@@ -146,6 +146,31 @@ h1 {
 
 #scroll-box {
 	overflow-y: scroll;
+	flex: 1 1 auto;
+}
+
+#head {
+	text-align: center;
+	border-bottom: 2px solid #fff;
+	flex: 0 1 auto;
+	padding: 5px 0;
+}
+
+#bottom-right {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	text-align: right;
+}
+
+#mute-button {
+	cursor: pointer;
+}
+
+#credit {
+	color: #000;
+	font-size: 8px;
+	overflow: hidden;
 }
 
 @media only screen and (min-width: 600px) {
@@ -156,5 +181,15 @@ h1 {
 	.choice {
 		font-size: 1.5em;
 		width: 50%;
+	}
+	
+	#head {
+		padding: 1.25em 0;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.choice {
+		width: 33.33%;
 	}
 }

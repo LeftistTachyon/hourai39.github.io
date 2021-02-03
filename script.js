@@ -6,16 +6,6 @@
 //   audio_handler.innerHTML += holder;
 // }
 
-const quote = [
-  "attack.ogg",
-  "battle-start.ogg",
-  "idle.ogg",
-  "library.ogg",
-  "night-battle.ogg",
-  "secretary1.ogg",
-  "secretary2.ogg",
-  "secretary3.ogg",
-];
 var flag = 2, name = "haruna", searchWait = null;
 const ambience = document.getElementById("ambience"),
 		secretary = document.getElementById("secretary"),
@@ -31,7 +21,7 @@ const ambience = document.getElementById("ambience"),
 
 function randQuote() {
 	if (flag === 0) {
-		const audio = quote[Math.floor(Math.random() * quote.length)];
+		const audio = quotes[Math.floor(Math.random() * quotes.length)];
 		flag = 1;
 		map.style.cursor = "unset";
 		voice.setAttribute("src", "./audio/" + name + "/" + audio);
@@ -114,6 +104,16 @@ searchBox.addEventListener("input", function() {
 	}, 500);
 });
 
+document.getElementById("mute-button").addEventListener("click", function() {
+	if(ambience.paused) {
+		ambience.play();
+		this.src = "./volume.svg";
+	} else {
+		ambience.pause();
+		this.src = "./mute.svg";
+	}
+});
+
 // var hour = 1;
 var update = setInterval(function () {
 	const clock = document.getElementById("clock");
@@ -132,7 +132,7 @@ var update = setInterval(function () {
 		map.style.cursor = "unset";
 		let vcode = hr;
 		vcode = String(vcode < 10 ? ("0" + vcode) : vcode);
-		voice.setAttribute("src", "audio/" + name + "/" + vcode + ".ogg");
+		voice.setAttribute("src", "./audio/" + name + "/" + vcode + ".ogg");
 		voice.play();
 		secretary.style.animation = "rotate 0.5s infinite";
 	}

@@ -9,16 +9,16 @@
 		<script defer src="./script.js"></script>
 		<script src="./data.js"></script>
 		<script src="./search.js"></script>
-		<title>Kongou-class clock</title>
+		<title>KC clock</title>
 	</head>
 	<body>
-		<audio id="voice" src="./audio/haruna/attack.ogg"></audio>
+		<audio id="voice" src=""></audio>
 		<audio id="ambience" src="./audio/ambience.mp3"></audio>
 		<div class="hide-overflow">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 					id="secretary" style="opacity:0" preserveAspectRatio="xMidYMin meet"
 					width="871pt" height="995pt" viewBox="0 0 871 995">
-				<image id="image" xlink:href="./img/haruna.webp" />
+				<image id="image" xlink:href="" />
 				<a xlink:href="javascript:randQuote()" id="map">
 					<g id="innerG" transform="translate(0,995) scale(0.1,-0.1)" stroke="none" style="opacity:0">
 						<path id="path" d="" />
@@ -28,27 +28,40 @@
 			<span id="clock" class="translucent"></span>
 		</div>
 		<div id="back" class="translucent">&lt; Back</div>
+		<div id="bottom-right">
+			<p>
+				<a href="https://github.com/LeftistTachyon/hourai39.github.io" title="Visit the GitHub repository" target="_blank">
+					<img src="./github64.png" alt="GitHub logo" width="32px">
+				</a>
+			</p>
+			<p>
+				<img src="./volume.svg" width="32px" alt="Click me to mute" title="Click to mute" id="mute-button">
+			</p>
+			<p id="credit">Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+		</div>
 		<div id="icon-container">
-			<div style="text-align:center;border-bottom:2px solid #fff">
-				<br><h1>Choose your favorite Kongou class.</h1><br>
+			<div id="head">
+				<h1>Pick a ship, any ship.</h1><br>
 				Search: <input type="text" id="searchbox">
 			</div>
-			<span class="choice">
-				<span><img class="icon" src="./img/kongou_icon.png" alt="Kongou icon" data-name="kongou" /></span>
-				<span>Kongou</span>
-			</span>
-			<span class="choice">
-				<span><img class="icon" src="./img/hiei_icon.png" alt="Hiei icon" data-name="hiei" /></span>
-				<span>Hiei</span>
-			</span>
-			<span class="choice">
-				<span><img class="icon" src="./img/kirishima_icon.png" alt="Kirishima icon" data-name="kirishima" /></span>
-				<span>Kirishima</span>
-			</span>
-			<span class="choice">
-				<span><img class="icon" src="./img/haruna_icon.png" alt="Haruna icon" data-name="haruna" /></span>
-				<span>Haruna</span>
-			</span>
+			<div id="scroll-box">
+				<span class="choice">
+					<span><img class="icon" src="./img/kongou_icon.png" alt="Kongou icon" data-name="kongou" /></span>
+					<span>Kongou</span>
+				</span>
+				<span class="choice">
+					<span><img class="icon" src="./img/hiei_icon.png" alt="Hiei icon" data-name="hiei" /></span>
+					<span>Hiei</span>
+				</span>
+				<span class="choice">
+					<span><img class="icon" src="./img/kirishima_icon.png" alt="Kirishima icon" data-name="kirishima" /></span>
+					<span>Kirishima</span>
+				</span>
+				<span class="choice">
+					<span><img class="icon" src="./img/haruna_icon.png" alt="Haruna icon" data-name="haruna" /></span>
+					<span>Haruna</span>
+				</span>
+			</div>
 		</div>
 	</body>
 </html>
