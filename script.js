@@ -16,7 +16,7 @@ const quote = [
   "secretary2.ogg",
   "secretary3.ogg",
 ];
-var flag = 2, name = "haruna";
+var flag = 2, name = "haruna", searchWait = null;
 const ambience = document.getElementById("ambience"),
 		secretary = document.getElementById("secretary"),
 		secImage = document.getElementById("image"),
@@ -25,7 +25,8 @@ const ambience = document.getElementById("ambience"),
 		map = document.getElementById("map"),
 		path = document.getElementById("path"),
 		icons = document.getElementsByClassName("icon"),
-		iconContainer = document.getElementById("icon-container");
+		iconContainer = document.getElementById("icon-container"),
+		searchBox = document.getElementById("searchbox");
 
 
 function randQuote() {
@@ -99,6 +100,16 @@ document.getElementById("back").addEventListener("click", function() {
 	setTimeout(function() {
 		secretary.style.opacity = 0;
 	}, 1950);
+});
+
+searchBox.addEventListener("input", function() {
+	if (searchWait !== null) clearTimeout(searchWait);
+	searchWait = setTimeout(function() {
+		const lev = new LevComparator(searchBox.value);
+		console.log(Object.keys(data).sort(function(a, b) {
+			return lev.compare(a, b);
+		}));
+	}, 500);
 });
 
 // var hour = 1;
