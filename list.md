@@ -6,10 +6,10 @@ Just a list of those which I have implemented already and those I plan on implem
  - Hiei
  - Haruna
  - Kirishima
+ - Atlanta
 
 ## Plan to implement  
 They likely will be implemented in this order.
- - Atlanta
  - Bismark
  - Zuihou
  - Yamato
