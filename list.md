@@ -10,7 +10,7 @@ Just a list of those which I have implemented already and those I plan on implem
 
 ## Plan to implement  
 They likely will be implemented in this order.
- - Bismark
+ - Bismarck
  - Zuihou
  - Yamato
  - Kaga
@@ -32,3 +32,5 @@ They likely will be implemented in this order.
  - Hiryuu
  - Saratoga
  - Souryuu
+ - Shigure
+ - Yuudachi
