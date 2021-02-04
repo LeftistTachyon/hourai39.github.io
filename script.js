@@ -25,7 +25,7 @@ function randQuote() {
 		const audio = quotes[Math.floor(Math.random() * quotes.length)];
 		flag = 1;
 		map.style.cursor = "unset";
-		voice.setAttribute("src", "./audio/" + name + "/" + audio);
+		voice.src = "./audio/" + name + "/" + audio;
 		voice.play();
 		secretary.style.animation = "bounce 0.5s linear infinite";
 	}
@@ -67,11 +67,14 @@ for (const icon of icons) {
 			}, 1950);
 			
 			// start the ambience
-			ambience.play();
-			ambience.loop = true;
+			if(!ambience.src) {
+				ambience.src = "./audio/ambience.mp3";
+				ambience.play();
+				ambience.loop = true;
+			}
 			
 			// play the beginning line
-			voice.setAttribute("src", "./audio/" + name + "/sortie-start.ogg");
+			voice.src = "./audio/" + name + "/sortie-start.ogg";
 			voice.play();
 		} catch(e) {
 			console.error(e);
@@ -140,7 +143,7 @@ var update = setInterval(function () {
 		map.style.cursor = "unset";
 		let vcode = hr;
 		vcode = String(vcode < 10 ? ("0" + vcode) : vcode);
-		voice.setAttribute("src", "./audio/" + name + "/" + vcode + ".ogg");
+		voice.src = "./audio/" + name + "/" + vcode + ".ogg";
 		voice.play();
 		secretary.style.animation = "rotate 0.5s infinite";
 	}

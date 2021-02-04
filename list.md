@@ -7,11 +7,11 @@ Just a list of those which I have implemented already and those I plan on implem
  - Haruna
  - Kirishima
  - Atlanta
+ - Bismarck
+ - Zuihou
 
 ## Plan to implement  
 They likely will be implemented in this order.
- - Bismarck
- - Zuihou
  - Yamato
  - Kaga
  - Choukai
