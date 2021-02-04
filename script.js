@@ -99,6 +99,7 @@ document.getElementById("back").addEventListener("click", function() {
 searchBox.addEventListener("input", function() {
 	if (searchWait !== null) clearTimeout(searchWait);
 	searchWait = setTimeout(function() {
+		searchWait = null;
 		if(!searchBox.value) return;
 		
 		const lev = new LevComparator(searchBox.value);

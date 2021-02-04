@@ -9,10 +9,10 @@ Just a list of those which I have implemented already and those I plan on implem
  - Atlanta
  - Bismarck
  - Zuihou
+ - Yamato
 
 ## Plan to implement  
 They likely will be implemented in this order.
- - Yamato
  - Kaga
  - Choukai
  - Maya
